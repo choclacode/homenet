@@ -1,0 +1,19 @@
+<%- include('./partials/head.ejs') %>
+<%- include('./partials/header.ejs') %>
+
+  <section class="index">
+    <figure><img src="/images/earth.svg" alt="Earth"></figure>
+    <div>
+      <h1>HomeNet</h1>
+      <ul>
+        <li><a href="/quran" class="btn">Quran</a></li>
+        <li><a href="/articles" class="btn">Articles</a></li>
+      </ul><% if (user) { %>
+      <ul>
+        <li><a href="/discuss" class="btn">Discuss</a></li>
+        <li><a href="/articles/create" class="btn">Create</a></li>
+      </ul><% } %>
+    </div>
+  </section>
+
+<%- include('./partials/footer.ejs') %>
