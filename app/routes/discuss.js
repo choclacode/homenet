@@ -5,9 +5,10 @@ const { requireAuth } = require('../middlewares/auth')
 
 const discussRouter = Router()
 
-discussRouter.get('/discuss', requireAuth, discussget)
+discussRouter
+  .get('/discuss', requireAuth, discussget)
 
-discussRouter.get('/share', requireAuth, shareget)
-// discussRouter.post('/share', sharepost);
+  .get('/share', requireAuth, shareget)
+// .post('/share', sharepost);
 
 module.exports = discussRouter

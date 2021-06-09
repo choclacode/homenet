@@ -1,6 +1,6 @@
 const { verify } = require('jsonwebtoken')
 
-const { handleErrors, toDate } = require('../global/functions')
+const { handleErrors, toDate } = require('../helpers/functions')
 const Article = require('../models/Article')
 const User = require('../models/User')
 

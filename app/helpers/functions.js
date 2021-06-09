@@ -1,11 +1,5 @@
 const { sign } = require('jsonwebtoken')
 
-const listen = (app) => {
-  const server = app.listen(process.env.PORT)
-  const io = require('socket.io')(server)
-  io.on('connection', (socket) => socket.on('new-msg', (data) => socket.broadcast.emit('sendmsg', data)))
-}
-
 const schemaType = (min, max, errors) => ({
   type: String,
   required: [true, errors[0]],
@@ -54,7 +48,6 @@ const authget = (res, rendering, title) => {
 const toDate = (date) => `${date.toDateString().substr(4)} ${date.toTimeString().substring(0, 8)}`
 
 module.exports = {
-  listen,
   schemaType,
   handleErrors,
   createToken,

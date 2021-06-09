@@ -1,5 +1,5 @@
 const User = require('../models/User')
-const { handleErrors, createToken, authget } = require('../global/functions')
+const { handleErrors, createToken, authget } = require('../helpers/functions')
 
 const signup_get = (req, res) => authget(res, 'auth/signup', 'Sign Up')
 const signup_post = async (req, res) => {
