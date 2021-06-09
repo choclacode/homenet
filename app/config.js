@@ -20,7 +20,7 @@ module.exports = (app) =>
     .set('view engine', 'ejs')
     .set('views', `${__dirname}/views`)
     .use(
-      express.static('public'),
+      express.static(`${__dirname}/public`),
       express.json(),
       express.urlencoded({ extended: true }),
       cookie(process.env.COOKIE_SECRET),
