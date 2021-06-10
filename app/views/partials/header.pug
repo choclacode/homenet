@@ -1,0 +1,14 @@
+header
+  nav.links
+    h1.title
+      a(href="/") HomeNet
+    ul
+      if user
+        li#name Welcome, #{user.nickname}
+        li.btn
+          a(href="/auth/logout") Log Out
+      else
+        li.btn
+          a(href="/auth/login") Login
+        li.btn
+          a(href="/auth/signup") Sign Up

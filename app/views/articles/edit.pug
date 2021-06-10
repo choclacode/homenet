@@ -1,0 +1,22 @@
+extends ../layout.pug
+
+block title
+  | Edit Article
+
+block script
+  script(defer, src="/script.js")
+  script addEventListener('load', () => articles().edit())
+
+block content
+  section
+    h1 Edit Article
+    p Edit your article
+    form.article
+      input(type="text", name="title", placeholder="Title", value=article.title)
+      p.error.title-err
+      textarea(name="body", cols="30", rows="10", placeholder="Body")= article.body
+      p.error.body-err
+      input(type="submit", value="Create")
+    .preview
+      h1.title= article.title
+      article= article.body

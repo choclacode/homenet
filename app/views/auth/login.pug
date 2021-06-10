@@ -1,0 +1,19 @@
+extends ../layout.pug
+
+block title
+  | Login
+
+block script
+  script(defer, src="/script.js")
+  script addEventListener('load', () => auth().login())
+
+block content
+  section
+    h1 Login
+    p Login and join our local network
+    form.auth#login
+      input(type="text", name="username", placeholder="Username e.g. saqib123")
+      .error.username
+      input(type="password", name="password", placeholder="Password")
+      .error.password
+      input(type="submit", value="Login")

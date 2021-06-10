@@ -10,14 +10,14 @@ const rootRouter = Router()
 
 rootRouter
   .get('*', checkUser)
-  .get('/', (req, res) => res.render('home', { title: `${res.locals.user ? res.locals.user.nickname : 'Guest'}` }))
-  .get('/about', (req, res) => res.render('about', { title: 'About' }))
+  .get('/', (req, res) => res.render('home'))
+  .get('/about', (req, res) => res.render('about'))
 
   .use('/auth', authRouter)
   .use('/quran', quranRouter)
   .use('/articles', articlesRouter)
   .use(discussRouter)
 
-  .use((req, res) => res.status(404).render('404', { title: '404' }))
+  .use((req, res) => res.status(404).render('404'))
 
 module.exports = rootRouter

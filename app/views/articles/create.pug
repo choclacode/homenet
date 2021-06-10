@@ -1,0 +1,25 @@
+extends ../layout.pug
+
+block title
+  | Create Article
+
+block script
+  script(defer, src="/script.js")
+  script addEventListener('load', () => articles().create())
+
+block content
+  section
+    - const bodyplaceholder = `<p>The hereafter, the ever eternal place of living after death.</p><p>Every person has to suffer death, and after death, they will enter the hereafter. ...</p>`
+    h1 Create Article
+    p Create a very inspiring article to increase the fear of Allah!
+    form.article
+      input(type="text", name="title", placeholder="Title e.g. The Hereafter")
+      p.error.title-err
+      textarea(name="body", cols="30", rows="10", placeholder=`Body e.g. ${bodyplaceholder}`) 
+      p.error.body-err
+      input(type="text", name="slug", placeholder="Slug e.g. the-hereafter")
+      p.error.slug-err
+      input(type="submit", value="Create")
+    .preview
+      h1.title
+      article

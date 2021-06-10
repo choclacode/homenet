@@ -1,0 +1,28 @@
+extends ../layout.pug
+
+block title
+  | #{article.title} - #{article.author.name}
+
+block script
+  script(defer, src="/script.js")
+  script addEventListener('load', () => articles()._delete())
+
+block content
+  section.article.details
+    h1.title= article.title
+    article= article.body
+    p
+      | Author: #{''}
+      span.author.title= article.author.name
+    p Created at: #{article.createdAt.date}
+    br
+    br
+    br
+    if user && user.id == article.author.id
+      ul
+        li
+          a.btn(href=`/articles/edit/${article.slug}`) Edit
+        li
+          a.btn.delete(data-doc=article.slug, style="cursor: pointer") Delete
+    p
+      a.btn(href="/articles") Back

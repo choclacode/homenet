@@ -1,0 +1,21 @@
+extends ../layout.pug
+
+block title
+  | Sign Up
+
+block script
+  script(defer, src="/script.js")
+  script addEventListener('load', () => auth().signup())
+
+block content
+  section
+    h1 Sign Up
+    p Sign up to join our local network
+    form.auth#signup
+      input(type="text", name="username", placeholder="Username e.g. saqib123")
+      .error.username
+      input(type="text", name="nickname", placeholder="Nickname e.g. Saqib")
+      .error.nickname
+      input(type="password", name="password", placeholder="Password")
+      .error.password
+      input(type="submit", value="Sign Up")

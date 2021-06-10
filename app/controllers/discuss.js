@@ -1,6 +1,6 @@
-const discussget = (req, res) => res.render('commun/discuss', { title: 'Discuss' })
+const discussget = (req, res) => res.render('commun/discuss')
 
-const shareget = (req, res) => res.render('commun/share', { title: 'Share' })
+const shareget = (req, res) => res.render('commun/share')
 const sharepost = (req, res) => {}
 
 module.exports = {

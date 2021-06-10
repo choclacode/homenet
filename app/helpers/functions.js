@@ -40,9 +40,9 @@ const handleErrors = (err) => {
 }
 
 const createToken = (id) => sign({ id }, process.env.JWT_SECRET, { expiresIn: 3 * 24 * 60 * 60 })
-const authget = (res, rendering, title) => {
+const authget = (res, view) => {
   if (res.locals.user) res.redirect('/')
-  res.render(rendering, { title })
+  res.render(view)
 }
 
 const toDate = (date) => `${date.toDateString().substr(4)} ${date.toTimeString().substring(0, 8)}`

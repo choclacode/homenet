@@ -1,52 +1,41 @@
-const { verify } = require('jsonwebtoken')
-
-const { handleErrors, toDate } = require('../helpers/functions')
 const Article = require('../models/Article')
-const User = require('../models/User')
+const { handleErrors, toDate } = require('../helpers/functions')
 
 const articles_get = (req, res) =>
   Article.find()
-    .then((articles) => res.render('articles/home', { title: 'Articles', articles }))
+    .then((articles) => res.render('articles/home', { articles }))
     .catch(console.log)
 
-const createarticle_get = (req, res) => res.render('articles/create', { title: 'Create Article' })
+const createarticle_get = (req, res) => res.render('articles/create')
 const createarticle_post = async (req, res) => {
   const { title, body, slug } = req.body
-  const token = req.cookies.jwt
-  verify(token, 'mysecretcodethatisawsome', async (err, decodedToken) => {
-    const user = await User.findById(decodedToken.id)
-    try {
-      const d = new Date()
-      const article = await Article.create({
-        title,
-        body,
-        slug,
-        author: { id: user.id, name: user.nickname },
-        createdAt: { date: toDate(d), time: d.getTime() },
-      })
-      res.status(201).json({ article: article._id })
-    } catch (err) {
-      const errors = handleErrors(err).article
-      res.status(404).json({ errors })
-    }
-  })
+  const { user } = res.locals
+  try {
+    const d = new Date()
+    const article = await Article.create({
+      title,
+      body,
+      slug,
+      author: { id: user.id, name: user.nickname },
+      createdAt: { date: toDate(d), time: d.getTime() },
+    })
+    res.status(201).json({ article: article._id })
+  } catch (err) {
+    const errors = handleErrors(err).article
+    res.status(404).json({ errors })
+  }
 }
 
 const article_get = (req, res) =>
   Article.findOne({ slug: req.params.slug })
-    .then((article) =>
-      res.render('articles/details', {
-        title: `${article.title} - ${article.author}`,
-        article,
-      })
-    )
+    .then((article) => res.render('articles/details', { article }))
     .catch(() => res.redirect('/articles'))
 
 const editarticle_get = (req, res) => {
   const { id, nickname } = res.locals.user
   const { slug } = req.params
   Article.findOne({ slug, author: { id, name: nickname } }).then((article) => {
-    if (article) res.render('articles/edit', { title: 'Edit Article', article })
+    if (article) res.render('articles/edit', { article })
     else res.redirect('/articles')
   })
 }
@@ -67,13 +56,10 @@ const editarticle_put = async (req, res) => {
 
 const deletearticle = (req, res) => {
   const { slug } = req.params
-  const token = req.cookies.jwt
-  verify(token, 'mysecretcodethatisawsome', async (err, decodedToken) => {
-    const { id, nickname } = await User.findById(decodedToken.id)
-    Article.findOneAndDelete({ slug, author: { id, name: nickname } })
-      .then(() => res.json({ redirect: '/articles' }))
-      .catch(() => res.json({ redirect: '/articles' }))
-  })
+  const { id, nickname } = res.locals.user
+  Article.findOneAndDelete({ slug, author: { id, name: nickname } })
+    .then(() => res.json({ redirect: '/articles' }))
+    .catch(() => res.json({ redirect: '/articles' }))
 }
 
 module.exports = {

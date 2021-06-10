@@ -17,7 +17,7 @@ const listen = (app) => {
 
 module.exports = (app) =>
   listen(app)
-    .set('view engine', 'ejs')
+    .set('view engine', 'pug')
     .set('views', `${__dirname}/views`)
     .use(
       express.static(`${__dirname}/public`),

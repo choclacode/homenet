@@ -1,0 +1,16 @@
+extends ../layout.pug
+
+block title
+  | Articles
+
+block content
+  section
+    h1 Articles
+    p Read, learn and increase the faith for Allah!
+    ul.articles
+      for article in articles
+        li.article.link
+          a(href=`/articles/${article.slug}`)
+            .title= article.title
+            .author= article.author.name
+            .time= article.createdAt.date

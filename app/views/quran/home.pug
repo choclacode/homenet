@@ -1,0 +1,25 @@
+extends ../layout.pug
+
+block title
+  | القرآن الكريم
+
+block link
+  link(rel="stylesheet", href="/styles/quran.css")
+
+block content
+  section.quran
+    h1.title
+      | The Noble Quran
+      br
+      | القرآن الكريم
+    h4 Surahs (Chapters)
+    .row
+      for list in surahs
+        ul
+          for surah in list
+            li
+              a(href=`/quran/${surah.num}`)
+                span.num= surah.num
+                span.eng= surah.eng
+                span.ara= surah.ara
+                .mng= surah.mng

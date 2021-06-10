@@ -1,0 +1,22 @@
+extends ./layout.pug
+
+block title
+  | #{user ? user.nickname : 'Guest'}
+
+block content
+  section.index
+    figure
+      img(src="/images/earth.svg", alt="Earth")
+    div
+      h1 HomeNet
+      ul
+        li
+          a.btn(href="/quran") Quran
+        li
+          a.btn(href="/articles") Articles
+      if user
+        ul
+          li
+            a.btn(href="/discuss") Discuss
+          li
+            a.btn(href="/articles/create") Create
