@@ -1,3 +1,5 @@
+'use strict'
+
 const auth = () => {
   const main = (path) => {
     const form = document.querySelector(`form#${path}`)
@@ -60,6 +62,8 @@ const articles = () => {
         .replace('&', 'and')
         .replace(/[\s\W]/g, '-')
 
+    article.body.innerHTML = marked(article.body.textContent)
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault()
 
@@ -86,6 +90,7 @@ const articles = () => {
     })
 
     form.title.addEventListener('keyup', () => {
+      if (path != 'create') document.querySelector('span.title').textContent = form.title.value
       form.slug.value = slugify(form.title.value)
       article.title.textContent = form.title.value
     })

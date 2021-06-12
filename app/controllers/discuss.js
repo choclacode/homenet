@@ -1,3 +1,5 @@
+'use strict'
+
 const discussget = (req, res) => res.render('commun/discuss')
 
 const shareget = (req, res) => res.render('commun/share')

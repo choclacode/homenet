@@ -1,3 +1,5 @@
+'use strict'
+
 const { sign } = require('jsonwebtoken')
 
 const schemaType = (min, max, errors) => ({

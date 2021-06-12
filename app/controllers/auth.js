@@ -1,3 +1,5 @@
+'use strict'
+
 const User = require('../models/User')
 const { handleErrors, createToken, authget } = require('../helpers/functions')
 

@@ -1,10 +1,8 @@
+'use strict'
+
 const { Router } = require('express')
 
 const { checkUser } = require('../middlewares/auth')
-const authRouter = require('./auth')
-const quranRouter = require('./quran')
-const articlesRouter = require('./articles')
-const discussRouter = require('./discuss')
 
 const rootRouter = Router()
 
@@ -13,10 +11,10 @@ rootRouter
   .get('/', (req, res) => res.render('home'))
   .get('/about', (req, res) => res.render('about'))
 
-  .use('/auth', authRouter)
-  .use('/quran', quranRouter)
-  .use('/articles', articlesRouter)
-  .use(discussRouter)
+  .use('/auth', require('./auth'))
+  .use('/quran', require('./quran'))
+  .use('/articles', require('./articles'))
+  .use(require('./discuss'))
 
   .use((req, res) => res.status(404).render('404'))
 

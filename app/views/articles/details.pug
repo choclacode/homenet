@@ -1,7 +1,7 @@
 extends ../layout.pug
 
 block title
-  | #{article.title} - #{article.author.name}
+  | #{article.title} &laquo; #{article.author.name}
 
 block script
   script(defer, src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.0.2/marked.min.js")
@@ -25,6 +25,6 @@ block content
           a.btn(href=`/articles/${article.slug}/edit`) Edit
         li
           a.btn.delete(data-doc=article.slug, style="cursor: pointer") Delete
-        small(style="opacity: 0.4") Double click to delete article
+        small(style="opacity: 0.4") Double click to delete
     p
       a.btn(href="/articles") Back

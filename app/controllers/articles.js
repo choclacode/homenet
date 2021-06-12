@@ -1,3 +1,5 @@
+'use strict'
+
 const Article = require('../models/Article')
 const { handleErrors, toDate } = require('../helpers/functions')
 

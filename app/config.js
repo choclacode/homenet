@@ -1,3 +1,5 @@
+'use strict'
+
 const express = require('express')
 const { connect } = require('mongoose')
 const cookie = require('cookie-parser')
