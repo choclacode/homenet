@@ -278,6 +278,11 @@ footer span {
 ::selection {
   background-color: #e0ebe8;
 }
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #f0f0f0 #bdbcbc;
+}
 ::-webkit-scrollbar {
   width: 3px;
   height: 1px;
@@ -287,6 +292,10 @@ footer span {
 }
 ::-webkit-scrollbar-thumb {
   background: #bdbcbc;
+}
+
+#chatbox li .msg {
+  scrollbar-width: none;
 }
 #chatbox li .msg::-webkit-scrollbar {
   width: 0;
