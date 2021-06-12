@@ -9,9 +9,9 @@ block link
 block content
   section.surah
     h1.title
-      | info.eng
+      = info.eng
       br
-      | info.ara
+      = info.ara
     ul
       if !(info.num == 1 || info.num == 9)
         li#bismillah
