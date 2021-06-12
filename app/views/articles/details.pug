@@ -4,13 +4,14 @@ block title
   | #{article.title} - #{article.author.name}
 
 block script
+  script(defer, src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.0.2/marked.min.js")
   script(defer, src="/script.js")
-  script addEventListener('load', () => articles()._delete())
+  script addEventListener('load', () => { articles().details(); articles()._delete(); })
 
 block content
   section.article.details
     h1.title= article.title
-    article= article.body
+    article !{article.body}
     p
       | Author: #{''}
       span.author.title= article.author.name
@@ -21,8 +22,9 @@ block content
     if user && user.id == article.author.id
       ul
         li
-          a.btn(href=`/articles/edit/${article.slug}`) Edit
+          a.btn(href=`/articles/${article.slug}/edit`) Edit
         li
           a.btn.delete(data-doc=article.slug, style="cursor: pointer") Delete
+        small(style="opacity: 0.4") Double click to delete article
     p
       a.btn(href="/articles") Back

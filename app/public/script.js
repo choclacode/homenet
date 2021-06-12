@@ -79,7 +79,7 @@ const articles = () => {
           errors.body.textContent = data.errors.body
           if (path == 'create') errors.slug.textContent = data.errors.slug
         }
-        if (data.article) location.pathname = '/articles'
+        if (data.article) location.assign(`/articles/${slug !== '' ? slug : location.pathname.split('/')[2]}`)
       } catch (err) {
         console.log(err.message)
       }
@@ -91,23 +91,31 @@ const articles = () => {
     })
     form.body.addEventListener(
       'keyup',
-      () => (article.body.innerHTML = form.body.value.replace(/<\/?script(.)*?>/g, ''))
+      () => (article.body.innerHTML = marked(form.body.value.replace(/<\/?script(.)*?>/g, '')))
     )
   }
-  const create = () => main('create', 'POST')
-  const edit = () => main(location.pathname.substr(10), 'PUT')
+
+  const details = () => {
+    const article = document.querySelector('article')
+    article.innerHTML = marked(article.innerHTML)
+  }
   const _delete = () => {
     const del = document.querySelector('a.delete')
 
-    del.addEventListener('click', () =>
-      fetch(`/articles/delete/${del.dataset.doc}`, { method: 'DELETE' })
+    del.addEventListener('dblclick', () =>
+      fetch(`/articles/${del.dataset.doc}/delete`, { method: 'DELETE' })
         .then((res) => res.json())
-        .then((data) => (location.pathname = data.redirect))
+        .then((data) => location.assign(data.redirect))
         .catch(console.log)
     )
   }
 
-  return { create, edit, _delete }
+  return {
+    details,
+    create: () => main('create', 'POST'),
+    edit: () => main(location.pathname.substr(10), 'PUT'),
+    _delete,
+  }
 }
 const discuss = () => {
   const socket = io()

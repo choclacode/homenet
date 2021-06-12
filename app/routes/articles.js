@@ -21,9 +21,9 @@ articlesRouter
 
   .get('/:slug', article_get)
 
-  .get('/edit/:slug', requireAuth, editarticle_get)
-  .put('/edit/:slug', requireAuth, checkUser, editarticle_put)
+  .get('/:slug/edit', requireAuth, editarticle_get)
+  .put('/:slug/edit', requireAuth, checkUser, editarticle_put)
 
-  .delete('/delete/:slug', requireAuth, checkUser, deletearticle)
+  .delete('/:slug/delete', requireAuth, checkUser, deletearticle)
 
 module.exports = articlesRouter
