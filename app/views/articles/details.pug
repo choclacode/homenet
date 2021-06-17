@@ -3,11 +3,6 @@ extends ../layout.pug
 block title
   | #{article.title} &laquo; #{article.author.name}
 
-block script
-  script(defer, src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.0.2/marked.min.js")
-  script(defer, src="/script.js")
-  script addEventListener('load', () => { articles().details(); articles()._delete(); })
-
 block content
   section.article.details
     h1.title= article.title

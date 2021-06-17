@@ -1,0 +1,130 @@
+header
+  padding: 20px
+
+  .title
+    font-size: 30px
+    line-height: 68px
+    cursor: pointer
+    margin: 0 0 0 20px
+
+    @include media($breakpoint-md)
+      margin-left: 0
+
+.links
+  display: flex
+  justify-content: space-between
+  align-items: flex-end
+
+  ul
+    display: flex
+    align-items: center
+
+    li
+      margin: 0 20px
+
+      a
+        text-transform: uppercase
+        font-weight: 700
+        font-size: 0.8em
+        display: block
+        padding: 10px 16px
+
+      @include media($breakpoint-md)
+        margin: 0 0 0 10px
+
+  @include media($breakpoint-sm)
+    display: flex
+    flex-direction: column
+    align-items: center
+
+    ul
+      padding: 0
+
+      li
+        margin: auto 20px
+
+section
+  min-height: 50vh
+  margin: 20px
+  padding: 20px
+
+.index
+  display: flex
+  flex-direction: row
+  flex-wrap: wrap
+  margin: 20px auto
+
+  img
+    height: 250px
+    width: 250px
+    margin: auto
+
+  h1
+    background-image: -webkit-linear-gradient(right, #45b269, #b2455d)
+    background-clip: unset
+    -webkit-background-clip: text
+    -webkit-text-fill-color: transparent
+    width: 110px
+    margin: 30px
+
+  ul
+    display: flex
+    flex-direction: row
+    align-items: flex-start
+    margin: 50px auto
+    padding: 0
+
+  li
+    margin: 0 20px
+
+  .btn
+    text-transform: uppercase
+    font-weight: 700
+    font-size: 0.8em
+    padding: 10px 16px
+
+  @include media($breakpoint-md)
+    flex-direction: column-reverse
+    text-align: center
+    align-items: center
+
+    & > *
+      margin-bottom: 40px
+
+    h1,
+    ul
+      margin-left: auto
+      margin-right: auto
+      padding: 0
+
+form.auth,
+form.article,
+.preview
+  flex-direction: column
+  max-width: 960px
+  margin: 30px auto
+  padding: 20px
+  border: 0.5px dashed #2c5f6e
+  border-radius: 36px
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)
+
+form.auth
+  max-width: 400px
+
+@import 'articles'
+@import 'quran'
+@import 'discuss'
+
+footer
+  padding: 20px
+  margin-top: 70px
+  text-align: center
+  display: block
+  color: #222
+
+  a
+    color: #222
+
+  span
+    display: block
+    margin: 20px

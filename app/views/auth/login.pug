@@ -3,10 +3,6 @@ extends ../layout.pug
 block title
   | Login
 
-block script
-  script(defer, src="/script.js")
-  script addEventListener('load', () => auth().login())
-
 block content
   section
     h1 Login

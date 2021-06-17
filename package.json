@@ -1,11 +1,18 @@
 {
   "name": "homenet",
-  "version": "1.2.4",
+  "version": "1.3.0",
   "description": "Local Network",
   "main": "app",
   "scripts": {
     "start": "node .",
-    "serve": "npx nodemon"
+    "serve": "npx concurrently \"npm:serve:app\" \"npm:watch\"",
+    "serve:app": "npx nodemon --config config/nodemon.json",
+    "build": "npx concurrently \"npm:build:*\"",
+    "build:js": "webpack --config config/webpack.js",
+    "build:sass": "npx sass app/resources/sass/main.sass public/main.css --style=compressed --no-source-map",
+    "watch": "npx concurrently \"npm:watch:*\"",
+    "watch:js": "npm run build:js -- -w",
+    "watch:sass": "npm run build:sass -- -w"
   },
   "author": "Saqib",
   "dependencies": {
@@ -18,5 +25,11 @@
     "node-fetch": "^2.6.1",
     "pug": "^3.0.2",
     "socket.io": "^2.3.0"
+  },
+  "devDependencies": {
+    "marked": "^2.1.1",
+    "socket.io-client": "^2.3.0",
+    "webpack": "^5.39.1",
+    "webpack-cli": "^4.7.2"
   }
 }

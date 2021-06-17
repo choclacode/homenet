@@ -3,10 +3,6 @@ extends ../layout.pug
 block title
   | Sign Up
 
-block script
-  script(defer, src="/script.js")
-  script addEventListener('load', () => auth().signup())
-
 block content
   section
     h1 Sign Up

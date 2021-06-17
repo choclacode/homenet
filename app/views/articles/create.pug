@@ -3,11 +3,6 @@ extends ../layout.pug
 block title
   | Create Article
 
-block script
-  script(defer, src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.0.2/marked.min.js")
-  script(defer, src="/script.js")
-  script addEventListener('load', () => articles().create())
-
 block content
   section
     - const bodyplaceholder = `\nThe hereafter, the ever eternal place of living after death.\nEvery person has to suffer death, and after death, they will enter the hereafter. ...`

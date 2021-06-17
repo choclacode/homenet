@@ -3,11 +3,6 @@ extends ../layout.pug
 block title
   | Edit Article &laquo; #{article.title}
 
-block script
-  script(defer, src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.0.2/marked.min.js")
-  script(defer, src="/script.js")
-  script addEventListener('load', () => articles().edit())
-
 block content
   section
     h1 Edit Article

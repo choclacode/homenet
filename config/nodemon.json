@@ -1,0 +1,7 @@
+{
+  "ignore": [
+    "/public/**",
+    "/app/resources/js/**"
+  ],
+  "ext": "js,json"
+}

@@ -1,0 +1,41 @@
+.articles
+  padding: 0
+  margin-top: 50px
+  width: 80%
+
+.article
+  .author
+    font-size: 1.2em
+
+  &.link
+    border-left: 20px solid #4e9ab8
+    padding-left: 50px
+
+    *
+      margin: 20px 0 10px
+
+    &:hover
+      border-left-color: #315e74
+
+  &.details
+    .title
+      text-align: center
+      margin: 0 auto 50px
+
+      @include media($breakpoint-md)
+        width: initial
+
+    li
+      margin-right: 30px
+
+.article,
+.preview
+  .title
+    margin-bottom: 30px
+
+.preview
+  .title
+    margin: 20px auto 50px
+
+  article
+    padding: 10px 20px

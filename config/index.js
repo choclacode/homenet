@@ -3,9 +3,9 @@
 const express = require('express')
 const { connect } = require('mongoose')
 const cookie = require('cookie-parser')
-require('dotenv').config()
+require('dotenv').config({ path: `${__dirname}/.env/.env` })
 
-const rootRouter = require('./routes/root')
+const rootRouter = require('../app/routes/root')
 
 const listen = (app) => {
   connect(process.env.DB_URI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
@@ -20,9 +20,9 @@ const listen = (app) => {
 module.exports = (app) =>
   listen(app)
     .set('view engine', 'pug')
-    .set('views', `${__dirname}/views`)
+    .set('views', `${__dirname}/../app/views`)
     .use(
-      express.static(`${__dirname}/public`),
+      express.static('public'),
       express.json(),
       express.urlencoded({ extended: true }),
       cookie(process.env.COOKIE_SECRET),
