@@ -8,7 +8,7 @@ const quran_get = async (req, res) => res.render('quran/home', { surahs: await f
 const surah_get = async (req, res) => {
   try {
     const data = await fetch(`${url}/${req.params.surah}`).then((r) => r.json())
-    if (data instanceof Array && data.length === 3) return res.redirect('/quran')
+    if (data.success === false) return res.redirect('/quran')
     const { surah, info } = data
     res.render('quran/surah', { info, surah })
   } catch {
