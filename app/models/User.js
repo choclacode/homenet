@@ -1,7 +1,7 @@
 'use strict'
 
 const { Schema, model } = require('mongoose')
-const { genSalt, hash, compare } = require('bcrypt')
+const { genSalt, hash, compare } = require('bcryptjs')
 
 const { schemaType } = require('../helpers/functions')
 

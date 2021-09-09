@@ -17,7 +17,6 @@ block content
         li(id=ayah.num)
           .num= ayah.num
           .ara= ayah.ara
-          .num= info.translations.eng
-          .eng= ayah.eng
-          .num= info.translations.ban
-          .ban= ayah.ban
+          for l in (lang || 'eng:sai,ban').split(',').filter(l => l != 'ara')
+            .num= info.translations[l]
+            div(class=`${l == 'ban' ? 'ban' : 'eng'}`)= ayah[l]

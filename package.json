@@ -1,6 +1,6 @@
 {
   "name": "homenet",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "description": "Local Network",
   "main": "app",
   "scripts": {
@@ -16,7 +16,7 @@
   },
   "author": "Saqib",
   "dependencies": {
-    "bcrypt": "^5.0.0",
+    "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
