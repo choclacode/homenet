@@ -2,7 +2,7 @@
 
 const fetch = require('node-fetch')
 
-const url = 'https://choclacode.herokuapp.com/api/quran'
+const url = 'https://choclacode-production.up.railway.app/api/quran'
 
 const quran_get = async (req, res) => res.render('quran/home', { surahs: await fetch(url).then((r) => r.json()) })
 const surah_get = async (req, res) => {
